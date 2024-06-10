@@ -133,6 +133,7 @@ h4{
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width:95%;
 }
 #h4{
   color:rgb(37,86,246);
