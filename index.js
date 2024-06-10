@@ -131,10 +131,6 @@ function initMap() {
   ]
   });
   
-  // 마커 클러스터러 생성
-  markerCluster = new MarkerClusterer(map, [], {
-  imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
-  });
   }
 function encodeZIPToBase64(file) {
 const reader = new FileReader();
@@ -664,6 +660,5 @@ opensecondwindow(resultLabel, address, resultId, resultLogo,resultPhoto);
 markers.push(marker);
 
 // 클러스터러에 마커 추가
-markerCluster.addMarker(marker);
 }
 )}
