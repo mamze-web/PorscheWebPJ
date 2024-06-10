@@ -112,7 +112,29 @@ if (file && file.name.endsWith('.zip')) {
     // console.error('Please provide a ZIP file.');
 }
 });
-
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+  center: { lat: 37.5642135, lng: 127.0016985 },
+  zoom: 8,
+  disableDefaultUI: true,
+  styles:[
+    {
+      "featureType": "road",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    }
+  ]
+  });
+  
+  // 마커 클러스터러 생성
+  markerCluster = new MarkerClusterer(map, [], {
+  imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+  });
+  }
 function encodeZIPToBase64(file) {
 const reader = new FileReader();
 
@@ -488,7 +510,6 @@ arrow.innerHTML=""
 const leftThing = document.getElementById("leftThing")
 leftThing.classList.add('leftThing-click' , true)
 
-
 if(count%2==0){
     leftThing.classList.toggle('leftThing-click',true);
     count = count+1;
@@ -500,6 +521,7 @@ else if(count%2==1){
     count = count+1;
     secondwindow.classList.toggle('secondwindow-click' , false)
     arrow.innerHTML="✔️ 나의 주소 추가하기"
+    map.setZoom(8)
     count2=0;
     
 }
@@ -612,29 +634,7 @@ function sleep(ms) {
 const wakeUpTime = Date.now() + ms;
 while (Date.now() < wakeUpTime) {}
 }
-function initMap() {
-map = new google.maps.Map(document.getElementById('map'), {
-center: { lat: 37.5642135, lng: 127.0016985 },
-zoom: 8,
-disableDefaultUI: true,
-styles:[
-  {
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  }
-]
-});
 
-// 마커 클러스터러 생성
-markerCluster = new MarkerClusterer(map, [], {
-imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
-});
-}
 
 // addMarker 함수 수정하여 마커 클릭 시 인포윈도우 표시
 function addMarker(location, address, resultLogo,resultLabel,resultId,resultPhoto) {
