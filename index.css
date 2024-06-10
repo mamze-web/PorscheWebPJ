@@ -101,6 +101,7 @@ h4{
   display: flex;
   justify-content: center;
   margin-top:30px;
+  margin-right:10px;
 }
 #photoZip img{
   width:cover;
@@ -131,7 +132,7 @@ h4{
 
 .flex-align{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 #h4{
