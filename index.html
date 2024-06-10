@@ -74,32 +74,36 @@
               <div class="flex3">
                 <div id="suggestions" class="suggestions"></div>
               </div>
-              <div class="flex">
+              <h4 id="h4">프로필 등록하기</h4>
+              <div class="flex-align">
                 <div id="photoZip">
+                 
                 <label id="photolabel" for="photo">
                   <img id="previewPhoto" />
                   </label>
                 <input type="file" id="photo" name="photo"onchange="readURLPhoto(this);" ><br><br>
               </div>
-            </div>
-              <div class="flex">
-              <div class="flex10">
-                <div id="logoZip">
-                 
-                  <br>
-                  <label id="logolabel" for="logo">
-                    <img id="preview" />
-                  </label>
-                  <input type="file" id="logo" name="logo"onchange="readURL(this);" ><br><br>
-              </div>
-            </div>
-                <div class="flex">
-                  <div id="display-block">
-                  <label for="label" id="displayName"><h4>정보 등록하기</h4></label>
-                  <input type="text" id="label" name="label">
-                  </div>
+              <div id="display-block">
+                <div class="flex10">
+                  <div id="logoZip">
+                   
+                    <br>
+                   
+                    <label id="logolabel" for="logo">
+                      <img id="preview" />
+                    </label>
+                    <input type="file" id="logo" name="logo"onchange="readURL(this);" ><br><br>
                 </div>
               </div>
+                  <div class="flex">
+                    <div id="display-block">
+                    <label for="label" id="displayName"><br></label>
+                    <input type="text" id="label" name="label" placeholder="학교_팀이름을 입력해주세요.">
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
                 <!-- </div> -->
                 <div class="flex">
                   <button type="button" id="submit-btn" onclick="closedWindow()">등록</button>
