@@ -92,10 +92,11 @@ let myPlace;
 let base64File
 let pngBase64String
 let photoBase64String
-let isAuth 
+let isAuth
 let myLogo;
+let myPhoto;
 let myGroup 
-let myDatapiId
+let myDatapiId 
 
 const loginWindow = document.getElementById('loginPlz')
 document.getElementById('recordUploads').addEventListener('change', function(event) {
@@ -167,7 +168,7 @@ async function recordUploads(base64String){
         });
         
         const result = await response.json();
-        opensecondwindow(myLabel, "", myPlace,myLogo, isAuth); // 레코드 목록을 새로고침합니다.
+        opensecondwindow(myLabel, "", myPlace,myLogo, myPhoto); // 레코드 목록을 새로고침합니다.
         // 레코드가 성공적으로 등록되었으면 레코드 목록을 새로고침합니다.
         if (result.success) {
         }
@@ -348,6 +349,7 @@ listItem.addEventListener('click', () => {
   myLabel = item.label;
   myPlace = item.id;
   myLogo = resultLogo;
+  myPhoto = resultPhoto
   opensecondwindow(item.label, item.address, item.id, resultLogo,resultPhoto);
   map.setCenter(item.geolocation)
   map.setZoom(11)
