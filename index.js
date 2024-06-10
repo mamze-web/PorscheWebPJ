@@ -517,11 +517,11 @@ if(count%2==0){
 }
 else if(count%2==1){
     leftThing.classList.toggle('leftThing-click',false);
+    closedWindow()
     count = count+1;
     secondwindow.classList.toggle('secondwindow-click' , false)
     arrow.innerHTML="✔️ 나의 주소 추가하기"
     map.setZoom(8)
-    closedWindow()
     count2=0;
     
 }
