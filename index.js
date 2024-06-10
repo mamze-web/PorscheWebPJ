@@ -176,52 +176,34 @@ async function recordUploads(base64String){
     }
 }
 document.getElementById('logo').addEventListener('change', function(event){
-  handleImageInputChange(event, 'logoBase64String');
+const file = event.target.files[0];
+if (!file) {
+base64Output.value = 'No file selected.';
+return;
+}
+
+const reader = new FileReader();
+reader.onload = function(event) {
+pngBase64String = event.target.result.split(',')[1];
+};
+
+reader.readAsDataURL(file);
 });
 
 document.getElementById('photo').addEventListener('change', function(event){
-  handleImageInputChange(event, 'photoBase64String');
-});
-
-function handleImageInputChange(event, targetVariable) {
   const file = event.target.files[0];
   if (!file) {
-    base64Output.value = 'No file selected.';
-    return;
+  base64Output.value = 'No file selected.';
+  return;
   }
   
   const reader = new FileReader();
   reader.onload = function(event) {
-    const extension = file.name.split('.').pop().toLowerCase();
-    if (extension === 'heic') {
-      // Convert HEIC to JPEG
-      heic2any({
-        blob: file,
-        toType: "image/jpeg",
-        quality: 0.5 // Adjust quality as needed
-      })
-      .then(function (resultBlob) {
-        const reader = new FileReader();
-        reader.onload = function(event) {
-          window[targetVariable] = event.target.result.split(',')[1];
-        };
-        reader.readAsDataURL(resultBlob);
-      })
-      .catch(function (err) {
-        console.error(err);
-      });
-    } else {
-      const validExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp']; // Add more if needed
-      if (!validExtensions.includes(extension)) {
-        base64Output.value = 'Invalid file type. Please select an image file.';
-        return;
-      }
-      window[targetVariable] = event.target.result.split(',')[1];
-    }
+  photoBase64String = event.target.result.split(',')[1];
   };
   
   reader.readAsDataURL(file);
-}
+  });
 function encodeZIPToBase64(file) {
 if (file && file.name.endsWith('.zip')) {
     const reader = new FileReader();
@@ -535,11 +517,11 @@ if(count%2==0){
 }
 else if(count%2==1){
     leftThing.classList.toggle('leftThing-click',false);
+    closedWindow()
     count = count+1;
     secondwindow.classList.toggle('secondwindow-click' , false)
     arrow.innerHTML="✔️ 나의 주소 추가하기"
     map.setZoom(8)
-    addFolderDisplay.style.display="none"
     count2=0;
     
 }
