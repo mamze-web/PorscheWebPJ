@@ -92,7 +92,7 @@ let myPlace;
 let base64File
 let pngBase64String
 let photoBase64String
-let isAuth
+let isAuth = true
 let myLogo;
 let myPhoto;
 let myGroup 
