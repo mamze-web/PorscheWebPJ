@@ -287,7 +287,7 @@ headers: {
 },
 body: JSON.stringify({
   datapiId: myDatapiId,
-  groupId: myGroup
+  groupId: ''
 })
 });
 const result = await response.json();
