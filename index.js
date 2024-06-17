@@ -13,7 +13,7 @@ function AuthEvent(event) {
   isAuth = globalResultAuthData.body.isAuth
   myGroup = globalResultAuthData.body.groupId
   myDatapiId = globalResultAuthData.body.datapiId
-  
+  myClassMember = globalResultAuthData.body.isClassMember
 //   console.log(isAuth)
     // console.log(myGroup)
         
@@ -145,7 +145,7 @@ reader.onload = function(e) {
 }
 
 async function recordUploads(base64String){
-    if(isAuth==true){
+    if(myClassMember==true){
         const recordFile = base64String;
         const today = getCurrentDate();
         
@@ -471,7 +471,7 @@ google.maps.event.addDomListener(window, 'load', initAutocomplete);
 
 
 function addschool(){
-if(isAuth==true){
+if(myClassMember==true){
 secondwindow.classList.toggle('secondwindow-click',false)
 let addFolderDisplay = document.getElementById('addFolderDisplay');
 addFolderDisplay.style.display="block"
