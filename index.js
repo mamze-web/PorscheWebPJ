@@ -98,7 +98,7 @@ let myLogo;
 let myPhoto;
 let myGroup 
 let myDatapiId 
-
+let myClassMember
 const loginWindow = document.getElementById('loginPlz')
 document.getElementById('recordUploads').addEventListener('change', function(event) {
 const file = event.target.files[0];
