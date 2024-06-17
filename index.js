@@ -9,6 +9,7 @@ function AuthEvent(event) {
   // );
   
   globalResultAuthData = JSON.parse(event.data); // 전역 변수에 값 할당
+  console.log(globalResultAuthData)
   isAuth = globalResultAuthData.body.isAuth
   myGroup = globalResultAuthData.body.groupId
   myDatapiId = globalResultAuthData.body.datapiId
