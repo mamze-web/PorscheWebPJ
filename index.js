@@ -93,10 +93,10 @@ let myPlace;
 let base64File
 let pngBase64String
 let photoBase64String
-let isAuth
+let isAuth 
 let myLogo;
 let myPhoto;
-let myGroup 
+let myGroup
 let myDatapiId 
 
 const loginWindow = document.getElementById('loginPlz')
