@@ -97,7 +97,7 @@ let isAuth
 let myLogo;
 let myPhoto;
 let myGroup 
-let myDatapiId
+let myDatapiId 
 
 const loginWindow = document.getElementById('loginPlz')
 document.getElementById('recordUploads').addEventListener('change', function(event) {
@@ -360,46 +360,58 @@ addMarker({ lat: latitude, lng: longitude }, item.address, resultLogo,item.label
 });
 }
 
+const MAX_IMAGE_SIZE_BYTES = 300000
 
+function geocodeAddress(geocoder, address, label, logo) {
+  geocoder.geocode({ 'address': address }, function(results, status) {
+      if (status === 'OK') {
+          var lat = results[0].geometry.location.lat();
+          var lng = results[0].geometry.location.lng();
 
-function geocodeAddress(geocoder, address,label,logo) {
-        geocoder.geocode({ 'address': address }, function(results, status) {
-            if (status === 'OK') {
-                var lat = results[0].geometry.location.lat();
-                var lng = results[0].geometry.location.lng();
-                fetch("https://gongdo.kr/api/datapi/place/add",{
-        method:"POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            datapiId: myDatapiId,
-            groupId: myGroup,
-            form: {
-              label,
-              logo:pngBase64String,
-              address,
-              photo:photoBase64String,
-              geolocation: {
-                lat,
-                lng
-              
-            }
-        }})
-        
-      }).then((res)=> {
-        folderList(); // 주소 목록을 새로고침합니다.
-        })
-      // .then((result) => console.log("결과: ", result));
-      // Output the formData to the console (or handle as needed)
-    } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
+          // Check the size of the logo image
+          if (pngBase64String.length > MAX_IMAGE_SIZE_BYTES) {
+              alert('로고 이미지의 용량이 너무 큽니다. 200kb 이하의 이미지를 사용해 주세요.');
+              return;
+          }
+
+          // Check the size of the photo image
+          if (photoBase64String.length > MAX_IMAGE_SIZE_BYTES) {
+              alert('사진 이미지의 용량이 너무 큽니다. 200kb 이하의 이미지를 사용해 주세요.');
+              return;
+          }
+          if (photoBase64String.length > MAX_IMAGE_SIZE_BYTES && pngBase64String.length > MAX_IMAGE_SIZE_BYTES){
+              alert('이미지의 용량이 너무 큽니다. 200kb 이하의 이미지를 사용해 주세요.')
+          }
+          fetch("https://gongdo.kr/api/datapi/place/add", {
+              method: "POST",
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  datapiId: myDatapiId,
+                  groupId: myGroup,
+                  form: {
+                      label,
+                      logo: pngBase64String,
+                      address,
+                      photo: photoBase64String,
+                      geolocation: {
+                          lat,
+                          lng
+                      }
+                  }
+              })
+          }).then((res) => {
+              folderList(); // 주소 목록을 새로고침합니다.
+          }).catch((error) => {
+              console.error('장소 등록 중 오류 발생:', error);
+              alert('장소를 등록하는 중 오류가 발생했습니다. 다시 시도해 주세요.');
+          });
+      } else {
+          alert('지오코딩에 실패했습니다. 다시 시도해 주세요.');
       }
-        )
-        }
-
-
+  });
+}
 function readURL(input) {
 if (input.files && input.files[0]) {
 var reader = new FileReader();
