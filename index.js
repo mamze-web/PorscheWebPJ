@@ -47,6 +47,7 @@ window.onload = function() {
         // 맵 초기화
 
         initMap();
+        folderList()
         
         // iframeTest()
         profileLoadAuth()
@@ -96,7 +97,7 @@ let isAuth
 let myLogo;
 let myPhoto;
 let myGroup 
-let myDatapiId 
+let myDatapiId
 
 const loginWindow = document.getElementById('loginPlz')
 document.getElementById('recordUploads').addEventListener('change', function(event) {
@@ -156,7 +157,6 @@ async function recordUploads(base64String){
             body: JSON.stringify({
                 datapiId: myDatapiId,
                 placeId: myPlace,
-                groupId: myGroup,
                 form:{
                     label: today,
                     dataPack: recordFile
@@ -166,6 +166,7 @@ async function recordUploads(base64String){
         
         const result = await response.json();
         opensecondwindow(myLabel, "", myPlace,myLogo, myPhoto); // 레코드 목록을 새로고침합니다.
+        
         // 레코드가 성공적으로 등록되었으면 레코드 목록을 새로고침합니다.
         if (result.success) {
         }
@@ -645,6 +646,7 @@ icon: {
   scaledSize: new google.maps.Size(50, 50), // 이미지 크기 조절
   origin: new google.maps.Point(0, 0), // 이미지의 원점 설정
   anchor: new google.maps.Point(25, 25) // 이미지의 중심점 설정
+
 }
 });
 
@@ -656,6 +658,10 @@ const infowindow = new google.maps.InfoWindow({
 });
 
 opensecondwindow(resultLabel, address, resultId, resultLogo,resultPhoto);
+myLabel = resultLabel;
+myPlace = resultId;
+myLogo = resultLogo;
+myPhoto = resultPhoto
 
 // 마커를 배열에 추가
 markers.push(marker);
