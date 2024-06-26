@@ -93,11 +93,11 @@ let myPlace;
 let base64File
 let pngBase64String
 let photoBase64String
-let isAuth 
+let isAuth = true
 let myLogo;
 let myPhoto;
-let myGroup
-let myDatapiId 
+let myGroup = 'default'
+let myDatapiId = 'G8zR5Q0z1rHkwov0ieVG'
 
 const loginWindow = document.getElementById('loginPlz')
 document.getElementById('recordUploads').addEventListener('change', function(event) {
