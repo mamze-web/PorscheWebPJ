@@ -17,7 +17,7 @@ function AuthEvent(event) {
 //   console.log(isAuth)
     // console.log(myGroup)
         
-    // folderList()
+    folderList()
 }
 
 window.addEventListener("message", AuthEvent, false);
