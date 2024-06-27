@@ -18,6 +18,17 @@
 #address-details{
   display: flex;
 }
+#colab{
+  position:absolute;
+  right:0;
+  bottom:0;
+  margin:15px;
+  padding:10px 30px ;
+  background-color: rgb(37,86,246);
+  color:white;
+  border-radius: 10px;
+  font-size:13px;
+}
 #preview{
   width:150%;
   height:auto;
