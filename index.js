@@ -97,7 +97,7 @@ let isAuth = true
 let myLogo;
 let myPhoto;
 let myGroup = 'default'
-let myDatapiId
+let myDatapiId 
 
 const loginWindow = document.getElementById('loginPlz')
 document.getElementById('recordUploads').addEventListener('change', function(event) {
@@ -113,7 +113,9 @@ if (file && file.name.endsWith('.zip')) {
 } else {
     // console.error('Please provide a ZIP file.');
 }
-});
+event.target.value = '';
+}
+);
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
   center: { lat: 37.5642135, lng: 127.0016985 },
