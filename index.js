@@ -1,26 +1,26 @@
-// let globalResultAuthData; // 전역 변수 선언
+let globalResultAuthData; // 전역 변수 선언
 
-// function AuthEvent(event) {
-// //   console.log(event.data);
-// //   console.log("this is Test")
-//   // event.source.postMessage(
-//   //   "hi there yourself!  the secret response " + "is: rheeeeet!",
-//   //   event.origin,
-//   // );
+function AuthEvent(event) {
+//   console.log(event.data);
+//   console.log("this is Test")
+  // event.source.postMessage(
+  //   "hi there yourself!  the secret response " + "is: rheeeeet!",
+  //   event.origin,
+  // );
   
-//   globalResultAuthData = JSON.parse(event.data); // 전역 변수에 값 할당
-//   console.log(globalResultAuthData)
-//   isAuth = globalResultAuthData.body.isAuth
-//   myGroup = globalResultAuthData.body.groupId
-//   myDatapiId = globalResultAuthData.body.datapiId
+  globalResultAuthData = JSON.parse(event.data); // 전역 변수에 값 할당
+  // console.log(globalResultAuthData)
+  // isAuth = globalResultAuthData.body.isAuth
+  // myGroup = globalResultAuthData.body.groupId
+  myDatapiId = globalResultAuthData.body.datapiId
   
-// //   console.log(isAuth)
-//     // console.log(myGroup)
+//   console.log(isAuth)
+    // console.log(myGroup)
         
-//     folderList()
-// }
+    // folderList()
+}
 
-// window.addEventListener("message", AuthEvent, false);
+window.addEventListener("message", AuthEvent, false);
 
 
 //   function iframeTest(){
@@ -97,7 +97,7 @@ let isAuth = true
 let myLogo;
 let myPhoto;
 let myGroup = 'default'
-let myDatapiId = 'G8zR5Q0z1rHkwov0ieVG'
+let myDatapiId
 
 const loginWindow = document.getElementById('loginPlz')
 document.getElementById('recordUploads').addEventListener('change', function(event) {
